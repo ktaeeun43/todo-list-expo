@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import InputForm from "./components/InputForm";
+import TodoItem from "./components/TodoItem";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <View style={styles.listView}>
         <Text style={styles.listTitle}>할 일</Text>
       </View>
+      <TodoItem />
       <View style={styles.seperator} />
       <View style={styles.listView}>
         <Text style={styles.listTitle}>완료한 일</Text>
