@@ -1,27 +1,18 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import InputForm from "./components/InputForm";
-import TodoItem from "./components/TodoItem";
-import UnCheckBox from "../assets/uncheckbox.svg";
-import CheckBox from "../assets/checkbox.svg";
-import DeleteIcon from "../assets/delete.svg";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+import MainScreen from "./screen/MainScreen";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
-      <Text style={styles.pageTitle}>Expo init!!</Text>
-      <View style={styles.listView}>
-        <Text style={styles.listTitle}>할 일</Text>
-      </View>
-      <TodoItem />
-      <View style={styles.seperator} />
-      <View style={styles.listView}>
-        <Text style={styles.listTitle}>완료한 일</Text>
-      </View>
-      <InputForm />
-    </SafeAreaView>
+    <>
+      <Provider store={store}>
+        <MainScreen />
+      </Provider>
+    </>
   );
 }
 
