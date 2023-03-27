@@ -1,11 +1,23 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import UnCheckBox from "../assets/uncheckbox.svg";
+import CheckBox from "../assets/checkbox.svg";
+import DeleteIcon from "../assets/delete.svg";
 
 const TodoItem = () => {
   return (
     <View style={styles.itemContainer}>
-      <Text style={[styles.itemText]}>Todo</Text>
-      <Pressable style={[styles.deleteButton]} hitSlop={10}></Pressable>
+      <Pressable style={styles.itemCheckbox} hitSlop={10}>
+        <CheckBox style={styles.itemCheckboxCheckedIcon} />
+        <UnCheckBox />
+      </Pressable>
+      <Text style={[styles.itemText, styles.itemTextChecked]}>Todo</Text>
+      <Pressable
+        style={[styles.deleteButton, styles.deleteButtonDone]}
+        hitSlop={10}
+      >
+        <DeleteIcon />
+      </Pressable>
     </View>
   );
 };

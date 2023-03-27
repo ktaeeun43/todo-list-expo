@@ -3,6 +3,9 @@ import React from "react";
 import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import InputForm from "./components/InputForm";
 import TodoItem from "./components/TodoItem";
+import UnCheckBox from "../assets/uncheckbox.svg";
+import CheckBox from "../assets/checkbox.svg";
+import DeleteIcon from "../assets/delete.svg";
 
 export default function App() {
   return (
