@@ -4,45 +4,33 @@ import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+// Screens
 import MainScreen from "./screen/MainScreen";
+import LoginScreen from "./screen/LoginScreen";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
     <>
       <Provider store={store}>
-        <MainScreen />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              options={{ headerShown: false }}
+              name="Login"
+              component={LoginScreen}
+            />
+            <Stack.Screen
+              options={{ headerShown: false }}
+              name="Main"
+              component={MainScreen}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? 20 : 0,
-    backgroundColor: "#f7f8fa",
-  },
-  pageTitle: {
-    marginBottom: 35,
-    paddingHorizontal: 15,
-    fontSize: 54,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-  seperator: {
-    marginHorizontal: 10,
-    marginTop: 25,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  listView: {
-    flex: 1,
-  },
-  listTitle: {
-    marginBottom: 25,
-    paddingHorizontal: 15,
-    fontSize: 40,
-    fontWeight: "400",
-  },
-});
