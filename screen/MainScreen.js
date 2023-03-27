@@ -9,7 +9,6 @@ const MainScreen = () => {
   const todos = useSelector((state) => state.todo.todos);
   const todoTasks = todos.filter((item) => item.state === "todo");
   const completedTasks = todos.filter((item) => item.state === "done");
-  console.log(todoTasks.length, "Task 확인");
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
