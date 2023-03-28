@@ -11,6 +11,9 @@ import LoginScreen from "./screen/LoginScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
+// Firebase
+import app from "./firebase";
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (

@@ -9,10 +9,34 @@ import React, { useState } from "react";
 import ListIcon from "../assets/list.svg";
 import Password from "../assets/password.svg";
 import { useNavigation } from "@react-navigation/native";
+
+// firebase
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const auth = getAuth();
+  const handleSignup = async () => {
+    console.log("handleSignup");
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.log(error, "에러");
+    }
+  };
+  const handleLogin = async () => {
+    console.log("handleLogin");
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {}
+  };
+
   return (
     <View style={styles.container}>
       <Password />
@@ -35,7 +59,10 @@ const LoginScreen = () => {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.buttonOutline]}>
+        <TouchableOpacity
+          style={[styles.button, styles.buttonOutline]}
+          onPress={handleSignup}
+        >
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
